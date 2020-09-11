@@ -1,5 +1,5 @@
 package campus;
-
+import java.util.*;
 
 class Estudiante{
     private long expediente = 1l;
@@ -101,5 +101,35 @@ class Estudiante{
                           "\n creditos otorgados:\t" + getCreditosOtorgados() +
                           "\n creditos totales:\t" + getCreditosTotales() +
                           "\n calificaciones:\t" + getCalificaciones());
+    }
+
+    public float promedioAlumno()
+    {
+        float promedio = 0.0f;
+        for(int i = 0; i < calificaciones.length ;i++)
+            promedio += calificaciones[i];
+        promedio /= calificaciones.length;
+        return promedio;
+    }
+
+    public float modaAlumno()
+    {
+        float moda = 0.0f;
+        for(int i = 0; i < calificaciones.length ;i++);
+        return moda;
+    }
+
+    public float medianaAlumno()
+    {
+        float mediana = 0.0f;
+        int num = calificaciones.length;
+
+        Arrays.sort(calificaciones);
+        if((num%2) != 0)
+            mediana = calificaciones[(int)(num/2)];
+        else
+            mediana = (calificaciones[(num/2)] + calificaciones[(num/2)-1])/2;
+
+        return mediana;
     }
 }
