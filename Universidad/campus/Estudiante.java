@@ -115,7 +115,23 @@ class Estudiante{
     public float modaAlumno()
     {
         float moda = 0.0f;
-        for(int i = 0; i < calificaciones.length ;i++);
+        int frec, frecTemp,frecModa = 0;
+
+        Arrays.sort(calificaciones);
+
+        for(int i = 0; i < calificaciones.length ;i++) {
+            frecTemp = 1;
+            for (int j = 0; j < calificaciones.length; j++) {
+                if (calificaciones[i] == calificaciones[j])
+                    frecTemp++;
+            }
+            if(frecTemp > frecModa)
+            {
+                frecModa = frecTemp;
+                moda = calificaciones[ i ];
+            }
+        }
+
         return moda;
     }
 
