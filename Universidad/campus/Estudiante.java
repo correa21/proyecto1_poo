@@ -115,7 +115,7 @@ class Estudiante{
     public float modaAlumno()
     {
         float moda = 0.0f;
-        int frec, frecTemp,frecModa = 0;
+        int frecTemp,frecModa = 0;
 
         Arrays.sort(calificaciones);
 
@@ -127,8 +127,7 @@ class Estudiante{
             }
             if(frecTemp > frecModa)
             {
-                frecModa = frecTemp;
-                moda = calificaciones[ i ];
+                moda = calificaciones[i];
             }
         }
 
@@ -147,5 +146,11 @@ class Estudiante{
             mediana = (calificaciones[(num/2)] + calificaciones[(num/2)-1])/2;
 
         return mediana;
+    }
+
+    public float avanceCarrera() {
+        float avance = 0.0f;
+        avance = (creditosOtorgados * 100) / creditosTotales;
+        return avance;
     }
 }
