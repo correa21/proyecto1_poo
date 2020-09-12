@@ -127,6 +127,7 @@ class Estudiante{
             }
             if(frecTemp > frecModa)
             {
+                frecModa = frecTemp;
                 moda = calificaciones[i];
             }
         }
