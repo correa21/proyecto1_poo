@@ -1,14 +1,14 @@
 package campus;
 import java.util.*;
-
-class Estudiante{
+//TODO: fix calificaciones get and set
+public class Estudiante{
     private long expediente = 1l;
     private String nombre = "";
     private String apellidos = "";
     private String carrera = "";
     private int creditosOtorgados = 0;
     private int creditosTotales = 0;
-    private float[] calificaciones;
+    private float[] calificaciones = null;
 
     public Estudiante(long expediente, String nombre,
                       String apellidos, int creditosTotales)
@@ -28,87 +28,94 @@ class Estudiante{
         setCreditosOtorgados(creditosOtorgados);
     }
 
-    private void setNombre(String nombre)
+    public void setNombre(String nombre)
     {
         if ("" != nombre)
             this.nombre = nombre;
     }
-    private void setApellidos(String apellidos)
+    public void setApellidos(String apellidos)
     {
         if ("" != apellidos)
             this.apellidos = apellidos;
     }
-    private void setExpediente(long expediente)
+    public void setExpediente(long expediente)
     {
         if (0 < expediente)
             this.expediente = expediente;
     }
-    private void setCarrera(String carrera)
+    public void setCarrera(String carrera)
     {
         if ("" != carrera)
             this.carrera = carrera;
     }
-    private void setCreditosTotales(int creditosTotales)
+    public void setCreditosTotales(int creditosTotales)
     {
         if (0 < creditosTotales)
             this.creditosTotales = creditosTotales;
     }
-    private void setCreditosOtorgados(int creditosOtorgados)
+    public void setCreditosOtorgados(int creditosOtorgados)
     {
         if (0 < creditosOtorgados)
             this.creditosOtorgados = creditosOtorgados;
     }
-    private void setCalificaciones(float[] calificaciones)
+    public void setCalificaciones(float[] calificaciones)
     {
         if(null != calificaciones)
             this.calificaciones = calificaciones;
     }
 
-    private String getNombre()
+    public String getNombre()
     {
         return nombre;
     }
-    private String getApellidos()
+    public String getApellidos()
     {
         return apellidos;
     }
-    private long getExpediente()
+    public long getExpediente()
     {
         return expediente;
     }
-    private String getCarrera()
+    public String getCarrera()
     {
         return carrera;
     }
-    private int getCreditosTotales()
+    public int getCreditosTotales()
     {
         return creditosTotales;
     }
-    private int getCreditosOtorgados()
+    public int getCreditosOtorgados()
     {
         return creditosOtorgados;
     }
-    private float[] getCalificaciones()
+    public float[] getCalificaciones()
     {
         return  calificaciones;
     }
     public void desplegar()
     {
-        System.out.printf(" expediente:\t" + getExpediente() +
+        System.out.printf("\n expediente:\t" + getExpediente() +
                           "\n apellidos:\t" + getApellidos() +
                           "\n nombre:\t" + getNombre() +
                           "\n carrera:\t" + getCarrera() +
                           "\n creditos otorgados:\t" + getCreditosOtorgados() +
                           "\n creditos totales:\t" + getCreditosTotales() +
-                          "\n calificaciones:\t" + getCalificaciones());
+                          "\n calificaciones:\t" + getCalificaciones() +
+                          "\n promedio:\t" + promedioAlumno() +
+                          "\n moda:\t" + modaAlumno() +
+                          "\n mediana:\t" + medianaAlumno() +
+                          "\n avance carrera:\t" + avanceCarrera());
     }
 
     public float promedioAlumno()
     {
         float promedio = 0.0f;
-        for(int i = 0; i < calificaciones.length ;i++)
-            promedio += calificaciones[i];
-        promedio /= calificaciones.length;
+        if (calificaciones != null)
+        {
+            for(int i = 0; i < calificaciones.length ;i++)
+                promedio += calificaciones[i];
+            promedio /= calificaciones.length;
+        }
         return promedio;
     }
 
@@ -117,20 +124,23 @@ class Estudiante{
         float moda = 0.0f;
         int frecTemp,frecModa = 0;
 
-        Arrays.sort(calificaciones);
 
-        for(int i = 0; i < calificaciones.length ;i++) {
-            frecTemp = 1;
-            for (int j = 0; j < calificaciones.length; j++) {
-                if (calificaciones[i] == calificaciones[j])
-                    frecTemp++;
-            }
-            if(frecTemp > frecModa)
-            {
-                frecModa = frecTemp;
-                moda = calificaciones[i];
+        if (calificaciones != null) {
+            Arrays.sort(calificaciones);
+            for(int i = 0; i < calificaciones.length ;i++) {
+                frecTemp = 1;
+                for (int j = 0; j < calificaciones.length; j++) {
+                    if (calificaciones[i] == calificaciones[j])
+                        frecTemp++;
+                }
+                if(frecTemp > frecModa)
+                {
+                    frecModa = frecTemp;
+                    moda = calificaciones[i];
+                }
             }
         }
+
 
         return moda;
     }
@@ -138,14 +148,15 @@ class Estudiante{
     public float medianaAlumno()
     {
         float mediana = 0.0f;
-        int num = calificaciones.length;
+        if (calificaciones != null) {
+            int num = calificaciones.length;
+            Arrays.sort(calificaciones);
+            if((num%2) != 0)
+                mediana = calificaciones[(int)(num/2)];
+            else
+                mediana = (calificaciones[(num/2)] + calificaciones[(num/2)-1])/2;
 
-        Arrays.sort(calificaciones);
-        if((num%2) != 0)
-            mediana = calificaciones[(int)(num/2)];
-        else
-            mediana = (calificaciones[(num/2)] + calificaciones[(num/2)-1])/2;
-
+        }
         return mediana;
     }
 

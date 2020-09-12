@@ -1,10 +1,10 @@
 package campus;
-
+//TODO: Fix materiasImpartidas get and set 
 public class Profesor{
     private String nombre = "";
     private String departamentoAdscrito = "";
     private int aniosDeExperiencia = 0;
-    private String[] materiasImpartidas;
+    private String[] materiasImpartidas = null;
 
     public Profesor(String[] materiasImpartidas, String nombre,
                       String departamentoAdscrito, int aniosDeExperiencia)
@@ -15,41 +15,41 @@ public class Profesor{
         setMateriasImpartidas(materiasImpartidas);
     }
 
-    private void setNombre(String nombre)
+    public void setNombre(String nombre)
     {
         if ("" != nombre)
             this.nombre = nombre;
     }
-    private void setDepartamentoAdscrito(String departamentoAdscrito)
+    public void setDepartamentoAdscrito(String departamentoAdscrito)
     {
         if ("" != departamentoAdscrito)
             this.departamentoAdscrito = departamentoAdscrito;
     }
-    private void setAniosDeExperiencia(int aniosDeExperiencia)
+    public void setAniosDeExperiencia(int aniosDeExperiencia)
     {
         if (0 <= aniosDeExperiencia)
             this.aniosDeExperiencia = aniosDeExperiencia;
     }
-    private void setMateriasImpartidas(String[] materiasImpartidas)
+    public void setMateriasImpartidas(String[] materiasImpartidas)
     {
         if(null != materiasImpartidas)
             this.materiasImpartidas = materiasImpartidas;
     }
 
-    private String getNombre()
+    public String getNombre()
     {
         return nombre;
     }
-    private String getDepartamentoAdscrito()
+    public String getDepartamentoAdscrito()
     {
         return departamentoAdscrito;
     }
 
-    private int getAniosDeExperiencia()
+    public int getAniosDeExperiencia()
     {
         return aniosDeExperiencia;
     }
-    private String[] getMateriasImpartidas()
+    public String[] getMateriasImpartidas()
     {
         return  materiasImpartidas;
     }
@@ -58,10 +58,11 @@ public class Profesor{
         System.out.printf(" Departamento Adscrito:\t" + getDepartamentoAdscrito() +
                           "\n Nombre:\t" + getNombre() +
                           "\n Anios De Experiencia:\t" + getAniosDeExperiencia() +
-                          "\n Materias Impartidas:\t" + getMateriasImpartidas());
+                          "\n Materias Impartidas:\t" + getMateriasImpartidas() +
+                          "\n Cantidad de materias impartidas\t" + materiasImpartidas.length);
     }
     public void numeroMateriasImpartidas()
     {
-        System.out.println(getMateriasImpartidas().length);
+        System.out.printf("%d", materiasImpartidas.length);
     }
 }
