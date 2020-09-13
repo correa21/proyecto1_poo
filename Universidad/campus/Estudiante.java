@@ -94,14 +94,25 @@ public class Estudiante{
     }
     public void desplegar()
     {
+        int index = 0;
+
         System.out.printf("\n expediente:\t" + getExpediente() +
                           "\n apellidos:\t" + getApellidos() +
                           "\n nombre:\t" + getNombre() +
                           "\n carrera:\t" + getCarrera() +
                           "\n creditos otorgados:\t" + getCreditosOtorgados() +
                           "\n creditos totales:\t" + getCreditosTotales() +
-                          "\n calificaciones:\t" + getCalificaciones() +
-                          "\n promedio:\t" + promedioAlumno() +
+                          "\n Calificaciones:\t");
+        if (calificaciones == null)
+        {
+            System.out.printf("0");
+        }
+        else{
+            for (index = 0 ; index < calificaciones.length-1 ; index++){
+                System.out.printf("%f ",calificaciones[index]);
+            }
+        }
+        System.out.printf("\n promedio:\t" + promedioAlumno() +
                           "\n moda:\t" + modaAlumno() +
                           "\n mediana:\t" + medianaAlumno() +
                           "\n avance carrera:\t" + avanceCarrera());
@@ -112,9 +123,9 @@ public class Estudiante{
         float promedio = 0.0f;
         if (calificaciones != null)
         {
-            for(int i = 0; i < calificaciones.length ;i++)
+            for(int i = 0; i < calificaciones.length-1 ;i++)
                 promedio += calificaciones[i];
-            promedio /= calificaciones.length;
+            promedio /= (calificaciones.length-1);
         }
         return promedio;
     }
@@ -127,9 +138,9 @@ public class Estudiante{
 
         if (calificaciones != null) {
             Arrays.sort(calificaciones);
-            for(int i = 0; i < calificaciones.length ;i++) {
+            for(int i = 0; i < calificaciones.length-1 ;i++) {
                 frecTemp = 1;
-                for (int j = 0; j < calificaciones.length; j++) {
+                for (int j = 0; j < calificaciones.length-1; j++) {
                     if (calificaciones[i] == calificaciones[j])
                         frecTemp++;
                 }
@@ -149,12 +160,12 @@ public class Estudiante{
     {
         float mediana = 0.0f;
         if (calificaciones != null) {
-            int num = calificaciones.length;
+            int num = calificaciones.length-1;
             Arrays.sort(calificaciones);
             if((num%2) != 0)
-                mediana = calificaciones[(int)(num/2)];
+                mediana = calificaciones[(int)(num/2)+1];//element (num/2)+1 because array have an unwanted element
             else
-                mediana = (calificaciones[(num/2)] + calificaciones[(num/2)-1])/2;
+                mediana = (calificaciones[(num/2)] + calificaciones[(num/2)+1])/2;
 
         }
         return mediana;

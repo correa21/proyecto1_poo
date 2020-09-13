@@ -1,5 +1,5 @@
 package campus;
-//TODO: Fix materiasImpartidas get and set 
+//TODO: Fix materiasImpartidas get and set
 public class Profesor{
     private String nombre = "";
     private String departamentoAdscrito = "";
@@ -58,11 +58,17 @@ public class Profesor{
         System.out.printf(" Departamento Adscrito:\t" + getDepartamentoAdscrito() +
                           "\n Nombre:\t" + getNombre() +
                           "\n Anios De Experiencia:\t" + getAniosDeExperiencia() +
-                          "\n Materias Impartidas:\t" + getMateriasImpartidas() +
-                          "\n Cantidad de materias impartidas\t" + materiasImpartidas.length);
+                          "\n Materias Impartidas:\t");
+        for (String str : materiasImpartidas){
+            if(str == null){
+                break;
+            }
+            System.out.printf("%s ",str);
+        }
+        System.out.println("\n Cantidad de materias impartidas:\t" + (materiasImpartidas.length-1));
     }
     public void numeroMateriasImpartidas()
     {
-        System.out.printf("%d", materiasImpartidas.length);
+        System.out.printf("%d", materiasImpartidas.length-1);
     }
 }

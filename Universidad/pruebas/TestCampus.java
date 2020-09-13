@@ -42,12 +42,10 @@ public class TestCampus{
                         clearScreen();
                         estudiantes.add(altaAlumnoOtro());
                     }
-                    indiceEstudiantes++;
                     break;
                 case 2:
                     clearScreen();
                     profesores.add(altaProfesor());
-                    indiceProfesores++;
                     break;
                 case 3:
                     System.out.println("introduzca nombre del Alumno:");
@@ -66,7 +64,7 @@ public class TestCampus{
                     nombreBusqueda = input.nextLine();
                     nombreBusqueda = input.nextLine();//dummy read requiered
                                                       //for bug erradication
-                    for (i=0; i<profesor.size(); i++)
+                    for (i=0; i<profesores.size(); i++)
                     {
                         if (nombreBusqueda.equals(profesores.get(i).getNombre()))
                             profesores.get(i).desplegar();
@@ -76,7 +74,7 @@ public class TestCampus{
                 default:
                     break;
             }
-            clearScreen();
+            System.out.printf("\n");
             System.out.printf("Quiere continuar?\n\t1)Si\n\t2)No\n");
             salida = input.nextInt();
             if(salida != 1)
@@ -165,6 +163,7 @@ public class TestCampus{
         numeroMaterias = in.nextInt();
         System.out.println("introduzca las materias separadas por un enter");
         materiasImpartidas = new String[numeroMaterias+1];
+        in.nextLine();
         for(int i=0; i<numeroMaterias; i++ ) {
             materiasImpartidas[i] = in.nextLine();
         }
