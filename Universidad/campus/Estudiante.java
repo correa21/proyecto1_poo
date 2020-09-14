@@ -11,19 +11,20 @@ public class Estudiante{
     private float[] calificaciones = null;
 
     public Estudiante(long expediente, String nombre,
-                      String apellidos, int creditosTotales)
+                      String apellidos, int creditosTotales, String carreraEstudiante)
     {
         setNombre(nombre);
         setExpediente(expediente);
         setApellidos(apellidos);
         setCreditosTotales(creditosTotales);
+        setCarrera(carreraEstudiante);
     }
 
     public Estudiante(long expediente, String nombre,
                       String apellidos, int creditosTotales,
-                      float[] calificaciones, int creditosOtorgados)
+                      String carreraEstudiante, int creditosOtorgados, float[] calificaciones )
     {
-        this(expediente, nombre, apellidos, creditosTotales);
+        this(expediente, nombre, apellidos, creditosTotales, carreraEstudiante);
         setCalificaciones(calificaciones);
         setCreditosOtorgados(creditosOtorgados);
     }

@@ -102,10 +102,13 @@ public class TestCampus{
          apellidos = in.nextLine();
          System.out.println("expediente:");
          expediente = in.nextLong();
-         System.out.println("creditosTotales:");
+         System.out.println("creditos Totales:");
          creditosTotales = in.nextInt();
+        System.out.println("Carrera:");
+        carrera = in.nextLine();
+        carrera = in.nextLine();
         return(new Estudiante(expediente, nombre,
-                              apellidos, creditosTotales));
+                              apellidos, creditosTotales, carrera));
     }
     public static Estudiante altaAlumnoOtro(){
         long expediente;
@@ -128,7 +131,7 @@ public class TestCampus{
         creditosTotales = in.nextInt();
         System.out.println("creditos Otorgados:");
         creditosOtorgados = in.nextInt();
-        System.out.println("carrera");
+        System.out.println("Carrera:");
         carrera = in.nextLine();
         carrera = in.nextLine();
         System.out.println("Cuantas materias está cursando");
@@ -139,9 +142,8 @@ public class TestCampus{
         for(int i=0; i<numeroCalificaciones; i++ ) {
             calificaciones[i] = in.nextFloat();
         }
-        return(new Estudiante(expediente, nombre,
-                              apellidos, creditosTotales,
-                              calificaciones, creditosOtorgados));
+        return(new Estudiante(expediente, nombre, apellidos, creditosTotales, carrera,
+                creditosOtorgados, calificaciones));
 
 
     }
